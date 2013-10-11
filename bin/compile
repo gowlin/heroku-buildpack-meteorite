@@ -203,6 +203,10 @@ EOF
 
 # vendor node into the slug
 PATH="$METEOR_BUILD_DIR/bin:$PATH"
+pushd "$METEOR_BUILD_DIR"/app/server
+npm uinstall fibers
+npm install fibers
+popd
 echo "-----> Vendoring node into slug"
 mkdir -p "$METEOR_BUILD_DIR/bin"
 cp "$VENDORED_NODE/bin/node" "$METEOR_BUILD_DIR/bin/node"
